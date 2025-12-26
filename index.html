@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixShift-File Converter - Free & Private</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="hero-box">
+            <div class="header-content">
+                <h1 class="logo-text">
+                    <a href="/" style="text-decoration: none; color: inherit;">
+                        <span>Pix</span>Shift
+                    </a>
+                </h1>
+            </div>
+            <p class="subtitle">Convert files instantly – 100% private & secure.All conversions happen locally in your
+                browser — we never see or store your files.</p>
+            <hr class="header-divider">
+        </header>
+
+        <!-- STEP 1 -->
+        <div id="step1" class="step active">
+            <h2>Choose Conversion Type</h2>
+
+            <div class="conversion-grid">
+                <button class="conversion-btn" onclick="selectConversion('webp','png')">WebP → PNG</button>
+                <button class="conversion-btn" onclick="selectConversion('png','webp')">PNG → WebP</button>
+                <button class="conversion-btn" onclick="selectConversion('webp','jpg')">WebP → JPG</button>
+                <button class="conversion-btn" onclick="selectConversion('jpg','webp')">JPG → WebP</button>
+                <button class="conversion-btn" onclick="selectConversion('jpg','pdf')">JPG → PDF</button>
+            </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="step2" class="step">
+            <div class="selected-conversion" id="conversionDisplay"></div>
+
+            <div class="file-upload-area" id="dropArea" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📁</div>
+                <h3>Click to select files</h3>
+                <p>or drag and drop files here</p>
+                <p class="note">
+                    Max 10 files • Max 10MB per file • Max 60MB total<br>
+                </p>
+            </div>
+
+            <input type="file" id="fileInput" multiple>
+            <div id="fileList" class="file-list"></div>
+            <button class="btn" id="convertBtn" onclick="convertFiles()" disabled>Convert Files</button>
+            <button class="btn gray" onclick="clearFiles()">Clear Files</button>
+            <button class="btn gray" onclick="goToStep(1)">← Change Conversion</button>
+        </div>
+
+        <!-- STEP 3 -->
+        <div id="step3" class="step">
+            <div class="done"></div>
+            <h2 class="success">Conversion Complete!</h2>
+
+            <div id="downloadList" class="file-list"></div>
+
+            <button class="btn" onclick="downloadAll()">Download All</button>
+            <button class="btn gray" onclick="resetConverter()">Convert More</button>
+        </div>
+
+    </div> <!-- End of container -->
+
+    <!-- Privacy Section at Bottom -->
+    <section class="privacy-section">
+        <h2 class="privacy-title">Why Choose <span>Pix</span>Shift?</h2>
+        <div class="privacy-grid">
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="35"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-shield-icon lucide-shield">
+                        <path
+                            d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                    </svg></div>
+                <h3>100% Private & Secure</h3>
+                <p>Your files never leave your device. All conversions happen directly in your browser - we never see,
+                    access, or store your images.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-fast-forward-icon lucide-fast-forward">
+                        <path d="M12 6a2 2 0 0 1 3.414-1.414l6 6a2 2 0 0 1 0 2.828l-6 6A2 2 0 0 1 12 18z" />
+                        <path d="M2 6a2 2 0 0 1 3.414-1.414l6 6a2 2 0 0 1 0 2.828l-6 6A2 2 0 0 1 2 18z" />
+                    </svg></div>
+                <h3>Lightning Fast</h3>
+                <p>No upload or download delays. Instant conversions powered by your own device. No waiting for server
+                    processing.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-wifi-off-icon lucide-wifi-off">
+                        <path d="M12 20h.01" />
+                        <path d="M8.5 16.429a5 5 0 0 1 7 0" />
+                        <path d="M5 12.859a10 10 0 0 1 5.17-2.69" />
+                        <path d="M19 12.859a10 10 0 0 0-2.007-1.523" />
+                        <path d="M2 8.82a15 15 0 0 1 4.177-2.643" />
+                        <path d="M22 8.82a15 15 0 0 0-11.288-3.764" />
+                        <path d="m2 2 20 20" />
+                    </svg></div>
+                <h3>Works Offline</h3>
+                <p>Once the page loads, you can disconnect from the internet. Your privacy is guaranteed - conversions
+                    work completely offline.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-hand-coins-icon lucide-hand-coins">
+                        <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17" />
+                        <path
+                            d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" />
+                        <path d="m2 16 6 6" />
+                        <circle cx="16" cy="9" r="2.9" />
+                        <circle cx="6" cy="5" r="3" />
+                    </svg></div>
+                <h3>Completely Free</h3>
+                <p>No hidden fees, no subscriptions, no limits. Convert as many files as you want, whenever you want.
+                </p>
+            </div>
+        </div>
+        <div class="privacy-footer">
+            <p><strong>Your Data, Your Device, Your Control</strong> </p>
+            <p class="small-text">Unlike other converters that upload your files to their servers, PixShift respects
+                your privacy by keeping everything local.</p>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
