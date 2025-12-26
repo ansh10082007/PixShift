@@ -42,18 +42,6 @@ body {
 
 /* --- UPDATED LOGO STYLE --- */
 .logo-text {
-<<<<<<< HEAD
-    margin: 0;
-    font-size: 2.2rem;
-    font-family: 'Montserrat', sans-serif; /* Modern, bold font */
-    font-weight: 800;
-    letter-spacing: -1px; /* Tighter look for professional logos */
-}
-
-/* Color for PIX */
-.logo-text span {
-    color: #3851e0; 
-=======
     font-size: 2.2rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
@@ -65,7 +53,6 @@ body {
 .logo-text span {
     color: #3851e0; /* The "Pix" Blue */
     position: relative;
->>>>>>> ef72deb (updated the logo)
 }
 
 /* Color for SHIFT */
