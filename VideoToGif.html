@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video to GIF - PixShift</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .video-container { max-width: 600px; margin: 20px auto; text-align: center; }
+        video { width: 100%; border-radius: 8px; background: #000; }
+        .controls { margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; }
+        .time-display { font-weight: bold; color: #e74c3c; margin: 10px 0; }
+        #progressBar { width: 100%; height: 10px; background: #ddd; border-radius: 5px; display: none; margin: 10px 0; }
+        #progressFill { height: 100%; background: #3498db; width: 0%; border-radius: 5px; transition: width 0.2s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="hero-box">
+            <h1 class="logo-text"><span>Pix</span>Shift</h1>
+            <p class="subtitle">Video to GIF - Local & Private</p>
+        </header>
+
+        <div class="video-container">
+            <input type="file" id="videoInput" accept="video/mp4,video/webm">
+            
+            <div id="editorSection" style="display:none;">
+                <video id="videoPreview" controls></video>
+                <div class="controls">
+                    <p>1. Move the video to your desired <strong>Start Point</strong></p>
+                    <p class="time-display">GIF will be from: <span id="startTime">0:00</span> to <span id="endTime">0:05</span></p>
+                    <button class="btn" id="renderBtn">Generate 5s GIF</button>
+                </div>
+                
+                <div id="progressBar"><div id="progressFill"></div></div>
+                <div id="resultArea"></div>
+            </div>
+        </div>
+        <a href="index.html" class="btn gray">Back to Home</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+    <script src="VideoToGif.js"></script>
+</body>
+</html>

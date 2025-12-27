@@ -1,0 +1,125 @@
+/* Container for the Video Tool */
+.video-container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    margin: 2rem auto;
+}
+
+/* Hidden File Input (Styled via Button) */
+#videoInput {
+    margin-bottom: 1.5rem;
+    padding: 10px;
+    border: 2px dashed #3498db;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Video Player Styling */
+#videoPreview {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #dfe6e9;
+    background: #000; /* Black bars if video is vertical */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Control Panel */
+.controls {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: #f1f2f6;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.controls p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    color: #2d3436;
+}
+
+/* Start/End Time Indicators */
+.time-display {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: 0.9rem;
+}
+
+/* Progress Bar Container */
+#progressBar {
+    width: 100%;
+    height: 12px;
+    background: #dfe6e9;
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+    display: none; /* Shown during rendering */
+}
+
+/* The Animated Progress Fill */
+#progressFill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    transition: width 0.3s ease;
+}
+
+/* Resulting GIF Display */
+#resultArea {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #f1f2f6;
+    text-align: center;
+}
+
+#resultArea img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 3px solid #3498db;
+}
+
+/* Success Message */
+#resultArea h3 {
+    color: #2ecc71;
+    margin-bottom: 15px;
+}
+
+/* Button Styling (Matching your existing theme) */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn:disabled {
+    background: #b2bec3;
+    cursor: not-allowed;
+}
+
+.btn.gray {
+    background: #95a5a6;
+    margin-top: 20px;
+}
