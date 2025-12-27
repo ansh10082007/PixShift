@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image to Text - PixShift</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="ocr.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero-box">
+            <div class="header-content">
+                <h1 class="logo-text">
+                    <a href="/" style="text-decoration: none; color: inherit;">
+                        <span>Pix</span>Shift
+                    </a>
+                </h1>
+            </div>
+            <p class="subtitle">Extract text from images instantly – 100% private & secure. All processing happens locally in your browser.</p>
+            <hr class="header-divider">
+        </header>
+
+        <div class="ocr-container">
+            <a href="index.html" class="back-link">← Back to Converter</a>
+            
+            <h2 style="margin-top: 30px; color: #2d3436;">Image to Text (OCR)</h2>
+            <p style="color: #636e72; margin-bottom: 20px;">Upload an image containing text, and we'll extract it for you.</p>
+
+            <!-- Upload Section -->
+            <div class="upload-section" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📷</div>
+                <h3>Click to select an image</h3>
+                <p>or drag and drop an image here</p>
+                <p class="note">Supports: JPG, PNG, WebP • Max 10MB</p>
+            </div>
+
+            <input type="file" id="fileInput" accept="image/*">
+
+            <!-- Preview Section -->
+            <div class="preview-section" id="previewSection">
+                <div class="selected-file" id="selectedFile"></div>
+                <img id="imagePreview" class="image-preview" alt="Selected image">
+                
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill">0%</div>
+                </div>
+
+                <div class="button-group">
+                    <button class="ocr-btn primary" id="extractBtn" onclick="extractText()">Extract Text</button>
+                    <button class="ocr-btn secondary" onclick="resetOCR()">Choose Another Image</button>
+                </div>
+            </div>
+
+            <!-- Result Section -->
+            <div class="result-section" id="resultSection">
+                <h2 style="color: #2d3436; margin-bottom: 20px; text-align: center;">Compare & Review</h2>
+                
+                <div class="comparison-container">
+                    <div class="comparison-image-section">
+                        <h3>📷 Original Image</h3>
+                        <img id="comparisonImage" alt="Original image">
+                    </div>
+                    
+                    <div class="comparison-text-section">
+                        <h3>📝 Extracted Text</h3>
+                        <div class="extracted-text" id="extractedText"></div>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="ocr-btn primary" onclick="copyText()">📋 Copy Text</button>
+                    <button class="ocr-btn primary" onclick="downloadText()">⬇️ Download as TXT</button>
+                    <button class="ocr-btn secondary" onclick="resetOCR()">Extract from Another Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Section -->
+    <section class="privacy-section">
+        <h2 class="privacy-title">Secure & Private OCR</h2>
+        <div class="privacy-grid">
+            <div class="privacy-card">
+                <div class="privacy-icon">🔒</div>
+                <h3>100% Private</h3>
+                <p>Your images never leave your device. All text extraction happens locally in your browser.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon">⚡</div>
+                <h3>Fast Processing</h3>
+                <p>Advanced OCR technology extracts text from your images in seconds.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon">🌐</div>
+                <h3>Multiple Languages</h3>
+                <p>Supports English and many other languages for text recognition.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon">💯</div>
+                <h3>Free Forever</h3>
+                <p>No limits, no subscriptions. Extract text from as many images as you want.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="ocr.js"></script>
+</body>
+</html>
