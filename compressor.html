@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Compressor - PixShift</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="compressor.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor - PixShift</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="compressor.css">
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FW8KHX3CHZ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-FW8KHX3CHZ');
+</script>
+
 <body>
     <div class="container">
         <header class="hero-box">
@@ -18,15 +29,17 @@
                     </a>
                 </h1>
             </div>
-            <p class="subtitle">Compress images instantly – Reduce file size while maintaining quality. All processing happens locally in your browser.</p>
+            <p class="subtitle">Compress images instantly – Reduce file size while maintaining quality. All processing
+                happens locally in your browser.</p>
             <hr class="header-divider">
         </header>
 
         <div class="compressor-container">
             <a href="index.html" class="back-link">← Back to Converter</a>
-            
+
             <h2 style="margin-top: 30px; color: #2d3436;">Image Compressor</h2>
-            <p style="color: #636e72; margin-bottom: 20px;">Reduce image file size without losing quality. Perfect for web optimization!</p>
+            <p style="color: #636e72; margin-bottom: 20px;">Reduce image file size without losing quality. Perfect for
+                web optimization!</p>
 
             <!-- Upload Section -->
             <div class="upload-section" id="uploadArea" onclick="document.getElementById('fileInput').click()">
@@ -41,7 +54,7 @@
             <!-- Compression Settings -->
             <div class="settings-section" id="settingsSection">
                 <h3 style="color: #2d3436; margin-bottom: 20px;">Compression Settings</h3>
-                
+
                 <div class="quality-control">
                     <label for="qualitySlider">Quality Level: <strong id="qualityValue">80</strong>%</label>
                     <input type="range" id="qualitySlider" min="10" max="100" value="80" class="slider">
@@ -64,7 +77,8 @@
                 <div class="selected-files" id="selectedFiles"></div>
 
                 <div class="button-group">
-                    <button class="comp-btn primary" id="compressBtn" onclick="compressImages()">🗜️ Compress Images</button>
+                    <button class="comp-btn primary" id="compressBtn" onclick="compressImages()">🗜️ Compress
+                        Images</button>
                     <button class="comp-btn secondary" onclick="resetCompressor()">Clear All</button>
                 </div>
             </div>
@@ -72,9 +86,9 @@
             <!-- Results Section -->
             <div class="results-section" id="resultsSection">
                 <h3 style="color: #2d3436; margin-bottom: 20px;">Compression Results</h3>
-                
+
                 <div class="summary-stats" id="summaryStats"></div>
-                
+
                 <div class="results-grid" id="resultsGrid"></div>
 
                 <div class="button-group" style="margin-top: 30px;">
@@ -85,7 +99,7 @@
         </div>
     </div>
 
-      <!-- Privacy Section at Bottom -->
+    <!-- Privacy Section at Bottom -->
     <section class="privacy-section">
         <h2 class="privacy-title">Why Choose <span>Pix</span>Shift?</h2>
         <div class="privacy-grid">
@@ -151,4 +165,5 @@
     </section>
     <script src="compressor.js"></script>
 </body>
+
 </html>
