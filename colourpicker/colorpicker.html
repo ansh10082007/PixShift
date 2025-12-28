@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker - PixShift</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="colorpicker.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="hero-box">
+            <div class="header-content">
+                <h1 class="logo-text">
+                    <a href="/" style="text-decoration: none; color: inherit;">
+                        <span>Pix</span>Shift
+                    </a>
+                </h1>
+            </div>
+            <p class="subtitle">Pick and explore colors – Get RGB, HEX, HSL values and ready-to-use CSS code instantly.
+            </p>
+            <hr class="header-divider">
+        </header>
+
+        <div class="colorpicker-container">
+            <a href="../index.html" class="back-link">← Back to Converter</a>
+
+            <h2 style="margin-top: 30px; color: #2d3436;">Color Picker & CSS Generator</h2>
+            <p style="color: #636e72; margin-bottom: 20px;">Pick any color and get all the color codes you need for your
+                projects!</p>
+
+            <!-- Main Color Picker Section -->
+            <div class="picker-section">
+                <div class="picker-left">
+                    <div class="color-display" id="colorDisplay">
+                        <div class="color-preview" id="colorPreview"></div>
+                    </div>
+
+                    <div class="picker-controls">
+                        <div class="control-group">
+                            <label>Pick a Color:</label>
+                            <input type="color" id="colorInput" value="#3498db">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Or Enter HEX:</label>
+                            <input type="text" id="hexInput" value="#3498db" placeholder="#000000">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Or Extract from Image:</label>
+                            <button class="upload-image-btn" onclick="document.getElementById('imageInput').click()">
+                                📷 Upload Image
+                            </button>
+                            <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+
+                    <!-- Image Picker Section -->
+            <div id="imagePickerSection" style="margin-top:30px;">
+                <h3>Select Color From Image</h3>
+
+                <canvas id="imageCanvas"
+                    style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); cursor:crosshair;">
+                </canvas>
+
+                <div style="margin-top:15px; display:flex; align-items:center; gap:15px;">
+                    <div id="pickedColorPreview"
+                        style="width:50px; height:50px; border-radius:50%; border:2px solid #333;">
+                    </div>
+
+                    <span id="pickedColorHex" style="font-weight:bold; font-size:1.1rem;">#000000</span>
+                </div>
+            </div>
+
+                    <!-- RGB Sliders -->
+                    <div class="sliders-section">
+                        <h3>RGB Values</h3>
+
+                        <div class="slider-group">
+                            <label>Red: <span id="rValue">52</span></label>
+                            <input type="range" id="rSlider" min="0" max="255" value="52" class="slider red-slider">
+                        </div>
+
+                        <div class="slider-group">
+                            <label>Green: <span id="gValue">152</span></label>
+                            <input type="range" id="gSlider" min="0" max="255" value="152" class="slider green-slider">
+                        </div>
+
+                        <div class="slider-group">
+                            <label>Blue: <span id="bValue">219</span></label>
+                            <input type="range" id="bSlider" min="0" max="255" value="219" class="slider blue-slider">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="picker-right">
+                    <!-- Color Values -->
+                    <div class="values-section">
+                        <h3>Color Values</h3>
+
+                        <div class="value-card">
+                            <div class="value-label">HEX</div>
+                            <div class="value-display" id="hexValue">#3498db</div>
+                            <button class="copy-btn" onclick="copyValue('hexValue')">Copy</button>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-label">RGB</div>
+                            <div class="value-display" id="rgbValue">rgb(52, 152, 219)</div>
+                            <button class="copy-btn" onclick="copyValue('rgbValue')">Copy</button>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-label">RGBA</div>
+                            <div class="value-display" id="rgbaValue">rgba(52, 152, 219, 1)</div>
+                            <button class="copy-btn" onclick="copyValue('rgbaValue')">Copy</button>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-label">HSL</div>
+                            <div class="value-display" id="hslValue">hsl(204, 70%, 53%)</div>
+                            <button class="copy-btn" onclick="copyValue('hslValue')">Copy</button>
+                        </div>
+                    </div>
+
+                    <!-- CSS Code -->
+                    <div class="css-section">
+                        <h3>CSS Code</h3>
+
+                        <div class="css-card">
+                            <div class="css-title">Background Color</div>
+                            <div class="css-code" id="cssBg">background-color: #3498db;</div>
+                            <button class="copy-btn" onclick="copyValue('cssBg')">Copy</button>
+                        </div>
+
+                        <div class="css-card">
+                            <div class="css-title">Text Color</div>
+                            <div class="css-code" id="cssText">color: #3498db;</div>
+                            <button class="copy-btn" onclick="copyValue('cssText')">Copy</button>
+                        </div>
+
+                        <div class="css-card">
+                            <div class="css-title">Border</div>
+                            <div class="css-code" id="cssBorder">border: 2px solid #3498db;</div>
+                            <button class="copy-btn" onclick="copyValue('cssBorder')">Copy</button>
+                        </div>
+
+                        <div class="css-card">
+                            <div class="css-title">Box Shadow</div>
+                            <div class="css-code" id="cssShadow">box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);</div>
+                            <button class="copy-btn" onclick="copyValue('cssShadow')">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!-- Color Palette Suggestions -->
+            <div class="palette-section">
+                <h3>Color Variations</h3>
+                <div class="palette-grid" id="paletteGrid"></div>
+            </div>
+
+            <!-- Predefined Colors -->
+            <div class="presets-section">
+                <h3>Popular Colors</h3>
+                <div class="presets-grid">
+                    <div class="preset-color" style="background: #e74c3c;" onclick="setColor('#e74c3c')"
+                        title="#e74c3c"></div>
+                    <div class="preset-color" style="background: #3498db;" onclick="setColor('#3498db')"
+                        title="#3498db"></div>
+                    <div class="preset-color" style="background: #2ecc71;" onclick="setColor('#2ecc71')"
+                        title="#2ecc71"></div>
+                    <div class="preset-color" style="background: #f39c12;" onclick="setColor('#f39c12')"
+                        title="#f39c12"></div>
+                    <div class="preset-color" style="background: #9b59b6;" onclick="setColor('#9b59b6')"
+                        title="#9b59b6"></div>
+                    <div class="preset-color" style="background: #1abc9c;" onclick="setColor('#1abc9c')"
+                        title="#1abc9c"></div>
+                    <div class="preset-color" style="background: #34495e;" onclick="setColor('#34495e')"
+                        title="#34495e"></div>
+                    <div class="preset-color" style="background: #95a5a6;" onclick="setColor('#95a5a6')"
+                        title="#95a5a6"></div>
+                    <div class="preset-color" style="background: #d35400;" onclick="setColor('#d35400')"
+                        title="#d35400"></div>
+                    <div class="preset-color" style="background: #c0392b;" onclick="setColor('#c0392b')"
+                        title="#c0392b"></div>
+                    <div class="preset-color" style="background: #8e44ad;" onclick="setColor('#8e44ad')"
+                        title="#8e44ad"></div>
+                    <div class="preset-color" style="background: #27ae60;" onclick="setColor('#27ae60')"
+                        title="#27ae60"></div>
+                    <div class="preset-color" style="background: #2980b9;" onclick="setColor('#2980b9')"
+                        title="#2980b9"></div>
+                    <div class="preset-color" style="background: #f1c40f;" onclick="setColor('#f1c40f')"
+                        title="#f1c40f"></div>
+                    <div class="preset-color" style="background: #e67e22;" onclick="setColor('#e67e22')"
+                        title="#e67e22"></div>
+                    <div class="preset-color" style="background: #16a085;" onclick="setColor('#16a085')"
+                        title="#16a085"></div>
+                    <div class="preset-color" style="background: #000000;" onclick="setColor('#000000')"
+                        title="#000000"></div>
+                    <div class="preset-color" style="background: #ffffff; border: 2px solid #ddd;"
+                        onclick="setColor('#ffffff')" title="#ffffff"></div>
+                    <div class="preset-color" style="background: #ecf0f1;" onclick="setColor('#ecf0f1')"
+                        title="#ecf0f1"></div>
+                    <div class="preset-color" style="background: #7f8c8d;" onclick="setColor('#7f8c8d')"
+                        title="#7f8c8d"></div>
+                </div>
+            </div>
+
+            <!-- Status Message Area -->
+            <div id="statusArea"></div>
+        </div>
+    </div>
+
+    <!-- Privacy Section -->
+    <section class="privacy-section">
+        <h2 class="privacy-title">Perfect Color Picker for Developers</h2>
+        <div class="privacy-grid">
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette-icon lucide-palette"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg></div>
+                <h3>All Color Formats</h3>
+                <p>Get HEX, RGB, RGBA, HSL values instantly. Perfect for any design project.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-icon lucide-code"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></div>
+                <h3>Ready CSS Code</h3>
+                <p>Copy-paste CSS code for backgrounds, text, borders, and shadows directly.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paint-bucket-icon lucide-paint-bucket"><path d="M11 7 6 2"/><path d="M18.992 12H2.041"/><path d="M21.145 18.38A3.34 3.34 0 0 1 20 16.5a3.3 3.3 0 0 1-1.145 1.88c-.575.46-.855 1.02-.855 1.595A2 2 0 0 0 20 22a2 2 0 0 0 2-2.025c0-.58-.285-1.13-.855-1.595"/><path d="m8.5 4.5 2.148-2.148a1.205 1.205 0 0 1 1.704 0l7.296 7.296a1.205 1.205 0 0 1 0 1.704l-7.592 7.592a3.615 3.615 0 0 1-5.112 0l-3.888-3.888a3.615 3.615 0 0 1 0-5.112L5.67 7.33"/></svg></div>
+                <h3>Color Variations</h3>
+                <p>Explore lighter and darker shades of your chosen color automatically.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></div>
+                <h3>Instant Copy</h3>
+                <p>One-click copy for all values. Fast workflow for designers and developers.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="colorpicker.js"></script>
+</body>
+
+</html>
