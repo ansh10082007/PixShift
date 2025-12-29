@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Batch File Renamer - PixShift</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="renamer.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero-box">
+            <div class="header-content">
+                <h1 class="logo-text">
+                    <a href="/" style="text-decoration: none; color: inherit;">
+                        <span>Pix</span>Shift
+                    </a>
+                </h1>
+            </div>
+            <p class="subtitle">Rename multiple files instantly – Add prefix, numbering, and custom patterns to organize your files perfectly.</p>
+            <hr class="header-divider">
+        </header>
+
+        <div class="renamer-container">
+            <a href="../index.html" class="back-link">← Back to Converter</a>
+            
+            <h2 style="margin-top: 30px; color: #2d3436;">Batch File Renamer</h2>
+            <p style="color: #636e72; margin-bottom: 20px;">Rename multiple files at once with custom patterns and sequential numbering!</p>
+
+            <!-- Upload Section -->
+            <div class="upload-section" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📁</div>
+                <h3>Click to select files</h3>
+                <p>or drag and drop files here</p>
+                <p class="note">Any file type • Up to 100 files</p>
+            </div>
+
+            <input type="file" id="fileInput" multiple>
+
+            <!-- Rename Settings -->
+            <div class="settings-section" id="settingsSection">
+                <h3 style="color: #2d3436; margin-bottom: 20px;">Rename Settings</h3>
+                
+                <div class="settings-grid">
+                    <!-- Prefix/Name -->
+                    <div class="setting-card">
+                        <label>File Name / Prefix:</label>
+                        <input type="text" id="prefixInput" placeholder="e.g., image, photo, document" value="file">
+                        <small>Leave empty for no prefix</small>
+                    </div>
+
+                    <!-- Numbering -->
+                    <div class="setting-card">
+                        <label>Numbering Style:</label>
+                        <select id="numberingStyle" class="select-input">
+                            <option value="number">Sequential Numbers (1, 2, 3...)</option>
+                            <option value="padded">Padded Numbers (001, 002, 003...)</option>
+                            <option value="none">No Numbering</option>
+                        </select>
+                    </div>
+
+                    <!-- Start Number -->
+                    <div class="setting-card">
+                        <label>Start From:</label>
+                        <input type="number" id="startNumber" value="1" min="0" max="9999">
+                        <small>Starting number for sequence</small>
+                    </div>
+
+                    <!-- Separator -->
+                    <div class="setting-card">
+                        <label>Separator:</label>
+                        <select id="separator" class="select-input">
+                            <option value="_">Underscore (file_1)</option>
+                            <option value="-">Hyphen (file-1)</option>
+                            <option value=" ">Space (file 1)</option>
+                            <option value="">None (file1)</option>
+                        </select>
+                    </div>
+
+                    <!-- Case -->
+                    <div class="setting-card">
+                        <label>Text Case:</label>
+                        <select id="textCase" class="select-input">
+                            <option value="original">Keep Original</option>
+                            <option value="lower">lowercase</option>
+                            <option value="upper">UPPERCASE</option>
+                            <option value="title">Title Case</option>
+                        </select>
+                    </div>
+
+                    <!-- Keep Extension -->
+                    <div class="setting-card">
+                        <label>
+                            <input type="checkbox" id="keepExtension" checked>
+                            Keep Original Extension
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Preview -->
+                <div class="preview-section">
+                    <h4><u>Preview:</u></h4>
+                    <div class="preview-example" id="previewExample">
+                        <span class="preview-label">Example:</span>
+                        <span class="preview-name" id="previewName">file_1.jpg</span>
+                    </div>
+                </div>
+                <hr>
+                &nbsp;
+
+                <!-- File List -->
+                <div class="files-list-section">
+                    <h4>Selected Files (<span id="fileCount">0</span>):</h4>
+                    <div class="files-list" id="filesList"></div>
+                </div>
+
+                <div class="button-group">
+                    <button class="rename-btn primary" onclick="processRename()">
+                        Rename Files
+                    </button>
+                    <button class="rename-btn secondary" onclick="addMoreFiles()">
+                        + Add More Files
+                    </button>
+                    <button class="rename-btn secondary" onclick="resetRenamer()">
+                        Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection">
+                <h3 style="color: #2d3436; margin-bottom: 20px;">Files Renamed Successfully!</h3>
+                
+                <div class="summary-box">
+                    <p><strong><span id="renamedCount">0</span></strong> files renamed</p>
+                </div>
+
+                <div class="renamed-files-list" id="renamedFilesList"></div>
+
+                <div class="button-group" style="margin-top: 30px;">
+                    <button class="rename-btn primary large " onclick="downloadAllRenamed()">
+                        Download All Files
+                    </button>
+                    <button class="rename-btn secondary" onclick="resetRenamer()">
+                        Rename More Files
+                    </button>
+                </div>
+
+                <div class="info-note">
+                    <strong>Note:</strong> Files will download with their new names. Your original files remain unchanged on your computer.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Section -->
+    <section class="privacy-section">
+        <h2 class="privacy-title">Batch Rename with <span>Pix</span>Shift</h2>
+        <div class="privacy-grid">
+            <div class="privacy-card">
+                <div class="privacy-icon">🔒</div>
+                <h3>100% Private</h3>
+                <p>Your files never leave your device. All renaming happens locally in your browser.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon">⚡</div>
+                <h3>Instant Renaming</h3>
+                <p>Rename up to 100 files in seconds with custom patterns and numbering.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon">🎯</div>
+                <h3>Flexible Patterns</h3>
+                <p>Custom prefix, sequential numbering, separators, and case conversion options.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon">📁</div>
+                <h3>Any File Type</h3>
+                <p>Works with images, documents, videos, audio - any file type you need to organize.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="renamer.js"></script>
+</body>
+</html>
