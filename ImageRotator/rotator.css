@@ -343,13 +343,21 @@
 }
 
 /* Status Messages */
-.status-message {
-    text-align: center;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 8px;
-    font-weight: 500;
+.status-message{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    /* Size */
+    min-width: 320px;     /* guarantees good width */
+    max-width: 420px;     /* optional, increase if needed */
+    padding: 14px 18px;   /* bigger padding */
+    font-size: 16px;      /* larger text */
+
+    z-index: 9999;
 }
+
+
 
 .status-message.info {
     background: #d1ecf1;
