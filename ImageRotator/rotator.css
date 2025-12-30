@@ -1,0 +1,390 @@
+.rotator-container {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.back-link {
+    display: inline-block;
+    margin: 20px 0;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #e74c3c;
+}
+
+/* Upload Section */
+.upload-section {
+    background: white;
+    border: 2px dashed #3498db;
+    border-radius: 15px;
+    padding: 50px;
+    text-align: center;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-section:hover {
+    border-color: #e74c3c;
+    background: #f8f9fa;
+}
+
+.upload-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    /* animation: rotate 30s linear infinite; */
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+#fileInput {
+    display: none;
+}
+
+/* Controls Section */
+.controls-section {
+    display: none;
+    margin-top: 30px;
+}
+
+.controls-section.active {
+    display: block;
+}
+
+/* Global Controls */
+.global-controls {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.global-controls h4 {
+    color: #2d3436;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.rotation-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.rotation-btn {
+    background: #f0f0f0;
+    color: #504f4f;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.rotation-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+}
+
+.rotation-btn.reset {
+    background: #f0f0f0;
+}
+
+.rotation-icon {
+    font-size: 1.8rem;
+}
+
+/* Images Grid */
+.images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.image-card {
+    background: white;
+    border: 2px solid #d6dbde;
+    border-radius: 15px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.image-preview {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: 
+        linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+        linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+        linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.image-name {
+    font-size: 0.85rem;
+    color: #636e72;
+    margin-bottom: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.rotation-status {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #2d3436;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.image-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.control-btn {
+    padding: 10px;
+    background: #d9d5da;
+    color: rgb(28, 27, 27);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.control-btn:hover {
+    background: #8e8b8f;
+}
+
+.control-btn.flip {
+    background: #d9d5da;
+}
+
+.control-btn.flip:hover {
+    background: #8e8b8f;
+}
+
+.control-btn.reset-single {
+    background: #e74c3c;
+    grid-column: 1 / -1;
+}
+
+.control-btn.reset-single:hover {
+    background: #731005;
+}
+
+/* Action Buttons */
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.rotate-btn {
+    padding: 14px 28px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.rotate-btn.primary {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    color: white;
+}
+
+.rotate-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4);
+}
+
+.rotate-btn.primary.large {
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.rotate-btn.secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.rotate-btn.secondary:hover {
+    background-color: #d0d0d0;
+}
+
+.rotate-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Results Section */
+.results-section {
+    display: none;
+    margin-top: 30px;
+}
+
+.results-section.active {
+    display: block;
+}
+
+.summary-box {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.3rem;
+}
+
+.rotated-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.rotated-card {
+    background: white;
+    border: 2px solid #2ecc71;
+    border-radius: 15px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.rotated-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+}
+
+.rotated-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: 
+        linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+        linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+        linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    margin-bottom: 15px;
+}
+
+.rotated-info {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.rotated-name {
+    font-size: 0.9rem;
+    color: #2d3436;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.rotation-applied {
+    font-size: 0.85rem;
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.download-btn {
+    width: 100%;
+    padding: 12px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Status Messages */
+.status-message {
+    text-align: center;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.status-message.info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.status-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .rotation-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .images-grid,
+    .rotated-images-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .rotate-btn {
+        width: 100%;
+    }
+}

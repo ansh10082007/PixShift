@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Rotator - PixShift</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="rotator.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero-box">
+            <div class="header-content">
+                <h1 class="logo-text">
+                    <a href="/" style="text-decoration: none; color: inherit;">
+                        <span>Pix</span>Shift
+                    </a>
+                </h1>
+            </div>
+            <p class="subtitle">Rotate images instantly – Fix orientation or create effects. Rotate multiple images at once with just a click.</p>
+            <hr class="header-divider">
+        </header>
+
+        <div class="rotator-container">
+            <a href="../index.html" class="back-link">← Back to Converter</a>
+            
+            <h2 style="margin-top: 30px; color: #2d3436;">Image Rotator</h2>
+            <p style="color: #636e72; margin-bottom: 20px;">Upload images and rotate them by 90°, 180°, 270°, or flip them horizontally/vertically!</p>
+
+            <!-- Upload Section -->
+            <div class="upload-section" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw-icon lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg></div>
+                <h3>Click to select images</h3>
+                <p>or drag and drop images here</p>
+                <p class="note">Supports: JPG, PNG, WebP • Max 50 images • Max 10MB per image</p>
+            </div>
+
+            <input type="file" id="fileInput" accept="image/*" multiple>
+
+            <!-- Rotation Controls -->
+            <div class="controls-section" id="controlsSection">
+                <h3 style="color: #2d3436; margin-bottom: 20px;">Rotation Controls</h3>
+                
+                <!-- Global Rotation Buttons -->
+                <div class="global-controls">
+                    <h4>Apply to All Images:</h4>
+                    <div class="rotation-buttons">
+                        <button class="rotation-btn" onclick="rotateAll(90)">
+                            <span class="rotation-icon">↻</span>
+                            <span>Rotate 90° Right</span>
+                        </button>
+                        <button class="rotation-btn" onclick="rotateAll(180)">
+                            <span class="rotation-icon">↻↻</span>
+                            <span>Rotate 180°</span>
+                        </button>
+                        <button class="rotation-btn" onclick="rotateAll(270)">
+                            <span class="rotation-icon">↺</span>
+                            <span>Rotate 90° Left</span>
+                        </button>
+                        <button class="rotation-btn" onclick="flipAll('horizontal')">
+                            <span class="rotation-icon">⇆</span>
+                            <span>Flip Horizontal</span>
+                        </button>
+                        <button class="rotation-btn" onclick="flipAll('vertical')">
+                            <span class="rotation-icon">⇅</span>
+                            <span>Flip Vertical</span>
+                        </button>
+                        <button class="rotation-btn reset" onclick="resetAllRotations()">
+                            <span class="rotation-icon">⟲</span>
+                            <span>Reset All</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Images Grid -->
+                <div class="images-grid" id="imagesGrid"></div>
+
+                <!-- Action Buttons -->
+                <div class="button-group">
+                    <button class="rotate-btn primary" onclick="processRotations()">
+                        Apply Rotations
+                    </button>
+                    <button class="rotate-btn secondary" onclick="addMoreImages()">
+                        Add More Images
+                    </button>
+                    <button class="rotate-btn secondary" onclick="resetRotator()">
+                        Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection">
+                <h3 style="color: #2d3436; margin-bottom: 20px;">✅ Images Rotated Successfully!</h3>
+                
+                <div class="summary-box">
+                    <p><strong><span id="rotatedCount">0</span></strong> images rotated and ready to download!</p>
+                </div>
+
+                <div class="rotated-images-grid" id="rotatedImagesGrid"></div>
+
+                <div class="button-group" style="margin-top: 30px;">
+                    <button class="rotate-btn primary large" onclick="downloadAllRotated()">
+                        Download All Images
+                    </button>
+                    <button class="rotate-btn secondary" onclick="resetRotator()">
+                        Rotate More Images
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Section -->
+    <section class="privacy-section">
+        <h2 class="privacy-title">Rotate Images with <span>Pix</span>Shift</h2>
+        <div class="privacy-grid">
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-icon lucide-shield"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
+                <h3>100% Private</h3>
+                <p>Your images never leave your device. All rotation happens locally in your browser.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-fast-forward-icon lucide-fast-forward"><path d="M12 6a2 2 0 0 1 3.414-1.414l6 6a2 2 0 0 1 0 2.828l-6 6A2 2 0 0 1 12 18z"/><path d="M2 6a2 2 0 0 1 3.414-1.414l6 6a2 2 0 0 1 0 2.828l-6 6A2 2 0 0 1 2 18z"/></svg></div>
+                <h3>Instant Rotation</h3>
+                <p>Rotate multiple images in seconds. No upload or processing delays.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw-icon lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg></div>
+                <h3>Flexible Control</h3>
+                <p>Rotate individual images or apply rotation to all at once. Complete control over each image.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-x-icon lucide-square-x"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></div>
+                <h3>No Quality Loss</h3>
+                <p>Lossless rotation preserves image quality. Perfect for fixing orientation issues.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="rotator.js"></script>
+</body>
+</html>
