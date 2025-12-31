@@ -282,4 +282,3 @@ function resetConverter() {
 
     goToStep(1);
 }
-
