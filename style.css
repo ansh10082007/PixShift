@@ -101,7 +101,6 @@ body {
 
 /* --- UPDATED CONVERSION BOXES --- */
 .conversion-btn {
-    /* Change background to a very light blue or any color you like */
     background: #f8f9fa; 
     border: 2px solid #dfe6e9;
     border-radius: 12px;
@@ -257,15 +256,15 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 30px 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.privacy-card:hover {
+/* .privacy-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
     background: rgba(255, 255, 255, 0.25);
-}
+} */
 
 .privacy-icon {
     font-size: 3.5rem;
@@ -299,4 +298,23 @@ body {
     font-size: 0.9rem;
     opacity: 0.85;
     font-style: italic;
+}
+
+/* Global reusable layout for footer tool buttons */
+.continue-with-buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;     /* wraps when screen is small */
+    margin-top:12px;
+}
+
+/* Compact button behavior only inside this block */
+.continue-with-buttons .conversion-btn{
+    width:auto !important;
+    display:inline-flex !important;
+    padding:10px 16px;
+    border-radius:10px;
+    white-space:nowrap;
 }

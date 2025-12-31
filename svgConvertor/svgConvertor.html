@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG to JPG Converter - PixShift</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="svgConvertor.css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FW8KHX3CHZ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-FW8KHX3CHZ');
+</script>
+
+<body>
+
+    <header class="hero-box">
+        <div class="header-content">
+            <h1 class="logo-text">
+                <a href="/" style="text-decoration: none; color: inherit;">
+                    <span>Pix</span>Shift
+                </a>
+            </h1>
+        </div>
+        <p class="subtitle">Convert SVG files or SVG codes to JPG instantly.And all this on your local browser making it
+            private and secure tool.</p>
+        <hr class="header-divider">
+    </header>
+
+    <div class="svgBacklink-container">
+        <a href="../index.html" class="back-link">← Back to Converter</a>
+    </div>
+
+    <div class="svg2jpg-container">
+        <h1>SVG to JPG Converter</h1>
+        <p class="sub-text">Upload SVG file or paste SVG code and convert it into JPG instantly.</p>
+
+        <div class="input-box">
+            <label>Select SVG File</label>
+            <input type="file" id="svgFile" accept=".svg">
+        </div>
+
+        <div class="input-box">
+            <label>Or Paste SVG Code</label>
+            <textarea id="svgCode" placeholder="Paste SVG code here..."></textarea>
+        </div>
+
+        <div class="input-box">
+            <label>Image Width (px)</label>
+            <input type="number" id="width" placeholder="Default 1024">
+        </div>
+        <div class="input-box">
+            <label>Image Height (px)</label>
+            <input type="number" id="height" placeholder="Auto Maintain Ratio">
+        </div>
+
+        <button id="convertBtn">Convert to JPG</button>
+
+        <div id="resultBox" class="hidden">
+            <p>Preview:</p>
+            <div class="bg-toggle">
+                <span>Background:</span>
+                <button id="bgWhite" class="active">White</button>
+                <button id="bgBlack">Black</button>
+            </div>
+
+            <img id="previewImg">
+            <br>
+            <a id="downloadBtn" download="converted.jpg">Download JPG</a>
+
+            <p></p>
+            &nbsp;
+            <hr>
+            &nbsp;
+            <p>Continue with:</p>
+            <div class="continue-with-buttons">
+                <button class="conversion-btn" onclick="window.location.href='../TextExtractor/TextExtractor.html'">Image → Text</button>
+                <button class="conversion-btn" onclick="window.location.href='../compressor/compressor.html'">Image compressor</button>
+                <button class="conversion-btn" onclick="window.location.href='../colourpicker/colorpicker.html'">Color picker</button>
+                <button class="conversion-btn" onclick="window.location.href='../batchRenamer/renamer.html'">Rename files in order</button>
+                <button class="conversion-btn" onclick="window.location.href='../ImageRotator/rotator.html'">Rotate Image/s</button>
+                <!-- <button class="conversion-btn" onclick="window.location.href='./svgConvertor/svgConvertor.html'">SVG(file/code) to JPG</button> -->
+            </div>
+        </div>
+    </div>
+    <!-- Privacy Section at Bottom -->
+    <section class="privacy-section">
+        <h2 class="privacy-title">Why Choose <span>Pix</span>Shift?</h2>
+        <div class="privacy-grid">
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="35"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-shield-icon lucide-shield">
+                        <path
+                            d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                    </svg></div>
+                <h3>100% Private & Secure</h3>
+                <p>Your files never leave your device. All conversions happen directly in your browser - we never
+                    see,
+                    access, or store your images.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-fast-forward-icon lucide-fast-forward">
+                        <path d="M12 6a2 2 0 0 1 3.414-1.414l6 6a2 2 0 0 1 0 2.828l-6 6A2 2 0 0 1 12 18z" />
+                        <path d="M2 6a2 2 0 0 1 3.414-1.414l6 6a2 2 0 0 1 0 2.828l-6 6A2 2 0 0 1 2 18z" />
+                    </svg></div>
+                <h3>Lightning Fast</h3>
+                <p>No upload or download delays. Instant conversions powered by your own device. No waiting for
+                    server
+                    processing.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-wifi-off-icon lucide-wifi-off">
+                        <path d="M12 20h.01" />
+                        <path d="M8.5 16.429a5 5 0 0 1 7 0" />
+                        <path d="M5 12.859a10 10 0 0 1 5.17-2.69" />
+                        <path d="M19 12.859a10 10 0 0 0-2.007-1.523" />
+                        <path d="M2 8.82a15 15 0 0 1 4.177-2.643" />
+                        <path d="M22 8.82a15 15 0 0 0-11.288-3.764" />
+                        <path d="m2 2 20 20" />
+                    </svg></div>
+                <h3>Works Offline</h3>
+                <p>Once the page loads, you can disconnect from the internet. Your privacy is guaranteed -
+                    conversions
+                    work completely offline.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-hand-coins-icon lucide-hand-coins">
+                        <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17" />
+                        <path
+                            d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" />
+                        <path d="m2 16 6 6" />
+                        <circle cx="16" cy="9" r="2.9" />
+                        <circle cx="6" cy="5" r="3" />
+                    </svg></div>
+                <h3>Completely Free</h3>
+                <p>No hidden fees, no subscriptions, no limits. Convert as many files as you want, whenever you
+                    want.
+                </p>
+            </div>
+        </div>
+        <div class="privacy-footer">
+            <p><strong>Your Data, Your Device, Your Control</strong> </p>
+            <p class="small-text">Unlike other converters that upload your files to their servers, PixShift respects
+                your privacy by keeping everything local.</p>
+        </div>
+    </section>
+
+    <script src="svgConvertor.js"></script>
+</body>
+
+</html>
