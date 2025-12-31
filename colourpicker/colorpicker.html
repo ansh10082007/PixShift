@@ -20,7 +20,8 @@
                     </a>
                 </h1>
             </div>
-            <p class="subtitle">Pick and explore colors – Get RGB, HEX, HSL values and ready-to-use CSS code instantly.
+            <p class="subtitle">Pick any color from an image or screen and instantly copy HEX, RGB and CSS values.
+                Simple, accurate and fully private — processed in your browser only.
             </p>
             <hr class="header-divider">
         </header>
@@ -60,21 +61,21 @@
                     </div>
 
                     <!-- Image Picker Section -->
-            <div id="imagePickerSection" style="margin-top:30px;">
-                <h3>Select Color From Image</h3>
+                    <div id="imagePickerSection" style="margin-top:30px;">
+                        <h3>Select Color From Image</h3>
 
-                <canvas id="imageCanvas"
-                    style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); cursor:crosshair;">
-                </canvas>
+                        <canvas id="imageCanvas"
+                            style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); cursor:crosshair;">
+                        </canvas>
 
-                <div style="margin-top:15px; display:flex; align-items:center; gap:15px;">
-                    <div id="pickedColorPreview"
-                        style="width:50px; height:50px; border-radius:50%; border:2px solid #333;">
+                        <div style="margin-top:15px; display:flex; align-items:center; gap:15px;">
+                            <div id="pickedColorPreview"
+                                style="width:50px; height:50px; border-radius:50%; border:2px solid #333;">
+                            </div>
+
+                            <span id="pickedColorHex" style="font-weight:bold; font-size:1.1rem;">#000000</span>
+                        </div>
                     </div>
-
-                    <span id="pickedColorHex" style="font-weight:bold; font-size:1.1rem;">#000000</span>
-                </div>
-            </div>
 
                     <!-- RGB Sliders -->
                     <div class="sliders-section">
@@ -158,7 +159,7 @@
                 </div>
             </div>
 
-            
+
 
             <!-- Color Palette Suggestions -->
             <div class="palette-section">
@@ -223,22 +224,50 @@
         <h2 class="privacy-title">Perfect Color Picker for Developers</h2>
         <div class="privacy-grid">
             <div class="privacy-card">
-                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette-icon lucide-palette"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg></div>
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-palette-icon lucide-palette">
+                        <path
+                            d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" />
+                        <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+                        <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+                        <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+                        <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+                    </svg></div>
                 <h3>All Color Formats</h3>
                 <p>Get HEX, RGB, RGBA, HSL values instantly. Perfect for any design project.</p>
             </div>
             <div class="privacy-card">
-                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-icon lucide-code"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></div>
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-code-icon lucide-code">
+                        <path d="m16 18 6-6-6-6" />
+                        <path d="m8 6-6 6 6 6" />
+                    </svg></div>
                 <h3>Ready CSS Code</h3>
                 <p>Copy-paste CSS code for backgrounds, text, borders, and shadows directly.</p>
             </div>
             <div class="privacy-card">
-                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paint-bucket-icon lucide-paint-bucket"><path d="M11 7 6 2"/><path d="M18.992 12H2.041"/><path d="M21.145 18.38A3.34 3.34 0 0 1 20 16.5a3.3 3.3 0 0 1-1.145 1.88c-.575.46-.855 1.02-.855 1.595A2 2 0 0 0 20 22a2 2 0 0 0 2-2.025c0-.58-.285-1.13-.855-1.595"/><path d="m8.5 4.5 2.148-2.148a1.205 1.205 0 0 1 1.704 0l7.296 7.296a1.205 1.205 0 0 1 0 1.704l-7.592 7.592a3.615 3.615 0 0 1-5.112 0l-3.888-3.888a3.615 3.615 0 0 1 0-5.112L5.67 7.33"/></svg></div>
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-paint-bucket-icon lucide-paint-bucket">
+                        <path d="M11 7 6 2" />
+                        <path d="M18.992 12H2.041" />
+                        <path
+                            d="M21.145 18.38A3.34 3.34 0 0 1 20 16.5a3.3 3.3 0 0 1-1.145 1.88c-.575.46-.855 1.02-.855 1.595A2 2 0 0 0 20 22a2 2 0 0 0 2-2.025c0-.58-.285-1.13-.855-1.595" />
+                        <path
+                            d="m8.5 4.5 2.148-2.148a1.205 1.205 0 0 1 1.704 0l7.296 7.296a1.205 1.205 0 0 1 0 1.704l-7.592 7.592a3.615 3.615 0 0 1-5.112 0l-3.888-3.888a3.615 3.615 0 0 1 0-5.112L5.67 7.33" />
+                    </svg></div>
                 <h3>Color Variations</h3>
                 <p>Explore lighter and darker shades of your chosen color automatically.</p>
             </div>
             <div class="privacy-card">
-                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></div>
+                <div class="privacy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy">
+                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                    </svg></div>
                 <h3>Instant Copy</h3>
                 <p>One-click copy for all values. Fast workflow for designers and developers.</p>
             </div>
